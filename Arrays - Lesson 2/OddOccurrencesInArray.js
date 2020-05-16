@@ -1,69 +1,37 @@
-/* Problem Description: A small frog wants to get to the other side of a river. 
-The frog is initially located on one bank of the river (position 0) and wants to get to the opposite bank (position X+1). 
-Leaves fall from a tree onto the surface of the river.
+/* Problem Description: A non-empty array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
 
-You are given an array A consisting of N integers representing the falling leaves. 
-A[K] represents the position where one leaf falls at time K, measured in seconds.
+For example, in array A such that:
 
-The goal is to find the earliest time when the frog can jump to the other side of the river. 
-The frog can cross only when leaves appear at every position across the river from 1 to X 
-(that is, we want to find the earliest moment when all the positions from 1 to X are covered by leaves). 
-You may assume that the speed of the current in the river is negligibly small, i.e. 
-the leaves do not change their positions once they fall in the river.
-
-For example, you are given integer X = 5 and array A such that:
-
-  A[0] = 1
-  A[1] = 3
-  A[2] = 1
-  A[3] = 4
-  A[4] = 2
-  A[5] = 3
-  A[6] = 5
-  A[7] = 4
-In second 6, a leaf falls into position 5. This is the earliest time when leaves appear in every position across the river.
-
+  A[0] = 9  A[1] = 3  A[2] = 9
+  A[3] = 3  A[4] = 9  A[5] = 7
+  A[6] = 9
+the elements at indexes 0 and 2 have value 9,
+the elements at indexes 1 and 3 have value 3,
+the elements at indexes 4 and 6 have value 9,
+the element at index 5 has value 7 and is unpaired.
 Write a function:
 
-function solution(X, A);
+class Solution { public int solution(int[] A); }
 
-that, given a non-empty array A consisting of N integers and integer X, 
-returns the earliest time when the frog can jump to the other side of the river.
+that, given an array A consisting of N integers fulfilling the above conditions, returns the value of the unpaired element.
 
-If the frog is never able to jump to the other side of the river, the function should return −1.
+For example, given array A such that:
 
-For example, given X = 5 and array A such that:
-
-  A[0] = 1
-  A[1] = 3
-  A[2] = 1
-  A[3] = 4
-  A[4] = 2
-  A[5] = 3
-  A[6] = 5
-  A[7] = 4
-the function should return 6, as explained above.
-
-Write an efficient algorithm for the following assumptions:
-
-N and X are integers within the range [1..100,000];
-each element of array A is an integer within the range [1..X].
+  A[0] = 9  A[1] = 3  A[2] = 9
+  A[3] = 3  A[4] = 9  A[5] = 7
+  A[6] = 9
+the function should return 7, as explained in the example above.
 
 */
 // SOLUTION:
 
-// (3, [1, 3, 1, 3, 2, 1, 3]) => 4
-// (5, [1, 3, 1, 4, 2, 3, 5, 4]) => 6
-// (1,[1]) => 0
-
-function solution(X, A) {
-    newArr = [];
-    for (var i = 0, len = A.length; i < len; i++) {
-        if (!newArr.includes(A[i]) && A[i] <= X) {
-            newArr.push(A[i])
-            if (newArr.length === X) return i;
-        }
-    }
-    return -1;
+function solution(A) {
+  let result = 0;
+  for (let element of A) {
+    result ^= element
+  }
+  return result
 }
+/*
+^ bir XOR operatörüdür, yani benzer (0 veya 1) bitin aynı konumda meydana gelmesi durumunda 0 üretecektir (yani, yanlış) aksi takdirde benzer değilse 1 üretecektir (yani, doğru). */
 
