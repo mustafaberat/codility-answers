@@ -65,3 +65,20 @@ function solution(N, A) {
     }
     return counters;
 }
+
+/*
+Alternative:
+function solution(N, A){
+	var mx = 0, def = 0;
+	arr = new Array(N).fill(0);
+	for(i = 0, n = A.length; i < n; ++i){
+		if(A[i] > N) def = mx;
+		else{
+			arr[A[i] - 1] = Math.max(def, arr[A[i] - 1]);
+			mx = Math.max(++arr[A[i] - 1], mx);
+		}
+	}
+	for(i = 0; i < N; ++i) arr[i] = Math.max(arr[i], def);
+	return arr;
+}
+*/
