@@ -38,14 +38,7 @@ the function should return 5, as explained above.*/
 // 0 1 0 1 1
 function solution(A) {
     var z = 0, r = 0;
-    for (var i in A) {
-        if (A[i] == 0) {
-            z++;
-        } else {
-            r += z;
-        }
-        // console.log("R:", r, "\t z:",z)
-    }
+    for (var i in A) A[i] == 0 ? z++ : r += z;
     if (r > 1000000000) return -1;
     return r;
 }
