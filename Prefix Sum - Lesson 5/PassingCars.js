@@ -39,8 +39,7 @@ the function should return 5, as explained above.*/
 function solution(A) {
     var z = 0, r = 0;
     for (var i in A) A[i] == 0 ? z++ : r += z;
-    if (r > 1000000000) return -1;
-    return r;
+    return (r > 1000000000) ? -1 : r;
 }
 
 
