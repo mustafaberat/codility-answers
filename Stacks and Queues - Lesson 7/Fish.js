@@ -35,18 +35,18 @@ For example, given the arrays shown above, the function should return 2, as expl
 // A: 4 3 2 1 5
 // B: 0 1 0 0 0
 function solution(A, B) {
-    let up = down = []
+    var up = [], down = []
     for (let i = 0, len = A.length; i < len; i++) {
         if (!B[i]) {
-            while (down.length) {
-                let lastDown = down.pop();
+            while (down.length > 0) {
+                var lastDown = down.pop();
                 if (lastDown > A[i]) {
                     down.push(lastDown);
                     break;
                 }
             }
             if (!down.length) up.push(A[i])
-        } else down.push(A[i]);
-    } return down.length + up.length
+        } else if (B[i]) down.push(A[i]);
+    }
+    return down.length + up.length
 }
-
