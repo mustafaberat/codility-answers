@@ -23,13 +23,8 @@ the elements of A are all distinct;
 each element of array A is an integer within the range [1..(N + 1)].*/
 
 function solution(A) {
-    let len = A.length;
-    while (true) {
-        if (A.includes(len + 1)) {
-            len--;
-        } else {
-            break;
-        }
-    }
-    return len + 1;
+    let lenPlusOne = A.length + 1;
+    let expected = lenPlusOne * (lenPlusOne+1) / 2;
+    A.forEach(number=>expected-=number);
+    return expected;
 }
