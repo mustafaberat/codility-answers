@@ -36,19 +36,12 @@ For example, given X = 5 and array A such that:
   A[7] = 4
 the function should return 6, as explained above.*/
 
-// SOLUTION:
-
-// (3, [1, 3, 1, 3, 2, 1, 3]) => 4
-// (5, [1, 3, 1, 4, 2, 3, 5, 4]) => 6
-// (1,[1]) => 0
-
 function solution(X, A) {
-    newArr = [];
-    for (var i = 0, len = A.length; i < len; i++) {
-        if (!newArr.includes(A[i]) && A[i] <= X) {
-            newArr.push(A[i])
-            if (newArr.length === X) return i;
-        }
+    let mySet = new Set();
+    for(let i = 0, len = A.length; i<len; i++){
+        mySet.add(A[i]);
+        if(mySet.size === X) return i;
     }
     return -1;
 }
+
