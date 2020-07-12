@@ -19,7 +19,11 @@ A ≤ B.*/
 // [6, 11, 2] => 3          6 8 10
 // [5, 15, 4] => 3          9 13 17
 
+function solution(A, B, K) {
+    return (B/K) - (A/K) + (A%K == 0 ? 1 : 0);
+}
 
+/*
 function solution(A, B, K) {
     if (K === 1) return B - A + 1; //For too large array to tricks
     let counter = 0;
@@ -32,7 +36,7 @@ function solution(A, B, K) {
         }
     }
     return counter;
-}
+}*/
 
 /* First think, I thought I could do better about time performance
 function solution(A, B, K) {
