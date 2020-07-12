@@ -44,7 +44,20 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..100,000];
 each element of array A is an integer within the range [1..1,000,000,000].*/
 
+function solution(A) {
+    let len = A.length, seen = new Array(len+1).fill(false);
+    
+    for(let number of A){
+        if(number > len) return 0;
+        else if(seen[number]) return 0;
+        else seen[number] = true;
+    }
+    
+    return 1;
+}
 
+/*
+83%
 function solution(A) {
     let len = A.length
     while (1) {
@@ -53,3 +66,4 @@ function solution(A) {
         else return 0;
     }
 }
+*/
