@@ -25,7 +25,7 @@ Write an efficient algorithm for the following assumptions:
 N and M are integers within the range [1..1,000,000,000].*/
 
 
-
+// O(log(N + M))
 function solution(N, M) {
     return N / ff(N, M);
 }
